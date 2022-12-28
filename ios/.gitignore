@@ -1,3 +1,2 @@
-*.xcworkspace
-Podfile.lock
-Pods
+Core.xcframework/
+Sources/

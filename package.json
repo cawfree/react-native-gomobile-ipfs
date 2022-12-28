@@ -1,44 +1,162 @@
 {
   "name": "react-native-gomobile-ipfs",
-  "title": "React Native gomobile-ipfs bindings",
   "version": "0.1.0",
-  "description": "React Native bindings for gomobile-ipfs",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "description": "test",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
   "files": [
-    "README.md",
-    "android",
-    "index.js",
-    "ios",
-    "react-native-gomobile-ipfs.podspec"
+    "ios/*",
+    "android/*",
+    "android/src/libs/*",
+    "android/src/main/java/*",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "lib/*",
+    "src/*",
+    "app.plugin.js",
+    "react-native-gomobile-ipfs.podspec",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tesseract-one/react-native-gomobile-ipfs.git",
-    "baseUrl": "https://github.com/tesseract-one/react-native-gomobile-ipfs"
+    "gomobileup": "yarn && sudo rm -rf gomobile-ipfs ; node scripts/gomobileup && sudo rm -rf gomobile-ipfs ; yarn",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepack": "bob build",
+    "release": "release-it",
+    "example": "yarn --cwd example",
+    "bootstrap": "yarn example && yarn install && yarn example pods",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "ios",
+    "android"
   ],
-  "author": {
-    "name": "Tesseract Systemc, Inc.",
-    "email": "info@tesseract.one"
+  "repository": "https://github.com/cawfree/react-native-gomobile-ipfs",
+  "author": "cawfree <hello@cawfree.com> (https://github.com/cawfree)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cawfree/react-native-gomobile-ipfs/issues"
   },
-  "license": "Apache-2.0",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
-  "peerDependencies": {
-    "react": ">=16.13.0 <17.0.0",
-    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  "homepage": "https://github.com/cawfree/react-native-gomobile-ipfs#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "react": "^16.13.0",
-    "react-native": "^0.63.0"
+    "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.2.2",
+    "@react-native-community/eslint-config": "^3.0.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "0.70.0",
+    "commitlint": "^17.0.2",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "fs-extra": "^11.1.0",
+    "jest": "^28.1.1",
+    "pod-install": "^0.1.0",
+    "prettier": "^2.0.5",
+    "react": "18.1.0",
+    "react-native": "0.70.6",
+    "react-native-builder-bob": "^0.20.0",
+    "release-it": "^15.0.0",
+    "typescript": "^4.5.2"
   },
-  "dependencies": {
-    "base64-js": "^1.3.0"
-  }
+  "resolutions": {
+    "@types/react": "17.0.21"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "packageManager": "^yarn@1.22.15",
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "dependencies": {}
 }
