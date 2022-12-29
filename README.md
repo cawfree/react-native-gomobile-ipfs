@@ -49,7 +49,7 @@ To build from source for Android and iOS, you'll need the following tools instal
 - [__Go__](https://go.dev/doc/install)
 - [__Android SDK__](https://developer.android.com/sdk) & [__Android NDK__](https://developer.android.com/ndk) & [__Java SE__](https://www.oracle.com/uk/java/technologies/downloads/)
 
-With these installed, run `yarn gomobileup` from the project root to generate the native binaries and link the example application.
+With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
 
 ### ✌️ License
 
