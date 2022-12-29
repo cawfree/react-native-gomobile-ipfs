@@ -37,7 +37,7 @@ export default function App() {
             method: 'post',
           });
 
-          console.warn('hi', helloWorlds, signature);
+          console.warn(helloWorlds, signature);
 
           await stop();
         } catch (e) {
