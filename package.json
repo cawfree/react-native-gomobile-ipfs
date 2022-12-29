@@ -1,6 +1,6 @@
 {
   "name": "react-native-gomobile-ipfs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "⚛️ 🌐 Access the Interplanetary File System (IPFS) from React Native without trusted third parties.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
