@@ -24,7 +24,6 @@ In this module, `import`ing [`react-native-gomobile-ipfs`](https://github.com/ca
 import { start, getIpfsUri } from 'react-native-gomobile-ipfs';
 import axios from 'axios';
 
-// ...
 const { stop } = await start();
 
 const uri = getIpfsUri(); // i.e. "http://localhost:5001/api/v0"
@@ -48,6 +47,8 @@ For further demonstration, please check out the [__Example App__](./example/src/
 To build from source for Android and iOS, you'll need the following tools installed:
 - [__Go__](https://go.dev/doc/install)
 - [__Android SDK__](https://developer.android.com/sdk) & [__Android NDK__](https://developer.android.com/ndk) & [__Java SE__](https://www.oracle.com/uk/java/technologies/downloads/)
+
+> ⚠️ Currently the build process is only supported on Apple Silicon.
 
 With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
 
