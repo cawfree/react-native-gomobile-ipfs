@@ -79,6 +79,29 @@ const aar_to = path.resolve(libs, 'core.aar');
 
 fs.copySync(aar, aar_to);
 
+child_process.execSync(`unzip core.aar`, { stdio, cwd: libs });
+
+fs.removeSync(aar_to, { recursive: true });
+
+// HACK: Remove some of the supported platforms from the .aar to reduce the binary size:
+const platforms_to_remove = ['x86', 'x86_64'];
+
+platforms_to_remove
+  .map((e) => path.resolve(libs, 'jni', e))
+  .forEach((e) => fs.removeSync(e, { recursive: true }));
+
+const filesToZip = fs.readdirSync(libs);
+
+child_process.execSync(
+  `zip -r9 core.aar ${filesToZip.join(' ')}`,
+  //`zip -r core.aar ${filesToZip.join(' ')}`,
+  { stdio, cwd: libs }
+);
+
+filesToZip.forEach((file) =>
+  fs.removeSync(path.resolve(libs, file), { recursive: true })
+);
+
 const bridge = path.resolve(
   gomobile_ipfs,
   'android',

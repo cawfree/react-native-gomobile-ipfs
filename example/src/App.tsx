@@ -16,28 +16,34 @@ export default function App() {
           const four_bytes = `/ipfs/bafybeicsj2jntw5nf4ld23czky3ydhpivphgivcgcxegzbqpdxrhbgfu3y/4bytes`;
           const bytecode = `${four_bytes}/f78d1c6a`;
 
+          const [{ data: helloWorlds }] = await Promise.all([
+            axios({
+              url: `${uri}/cat?arg=QmZ4tDuvesekSs4qM5ZBKpXiZGun7S2CYtEZRB3DYXkjGx`,
+              method: 'post',
+            }),
+          ]);
+
+          console.warn(helloWorlds);
+
           const [
-            { data: helloWorlds },
             {
               data: { Path: resolvedHash },
             },
           ] = await Promise.all([
             axios({
-              url: `${uri}/cat?arg=QmZ4tDuvesekSs4qM5ZBKpXiZGun7S2CYtEZRB3DYXkjGx`,
-              method: 'post',
-            }),
-            axios({
-              url: `${uri}/resolve?arg=${bytecode}`,
+              url: `${uri}/resolve?arg=${bytecode}&recursive=true&dht-timeout=0`,
               method: 'post',
             }),
           ]);
+
+          console.warn(resolvedHash);
 
           const { data: signature } = await axios({
             url: `${uri}/cat?arg=${resolvedHash}`,
             method: 'post',
           });
 
-          console.warn(helloWorlds, signature);
+          console.warn(signature);
 
           await stop();
         } catch (e) {
