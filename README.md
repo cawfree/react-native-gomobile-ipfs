@@ -52,7 +52,12 @@ For further demonstration, please check out the [__Example App__](./example/src/
   "expo": {
     "name": "my-app",
 +   "plugins": [
-+     "react-native-gomobile-ipfs"
++     [
++       "react-native-gomobile-ipfs",
++       {
++         "bluetoothPermissionText": "$(PRODUCT_NAME) needs access to Bluetooth."
++       }
++     ]
 +   ]
   }
 }
@@ -72,7 +77,6 @@ To build from source for Android and iOS, you'll need the following tools instal
 > ⚠️ Currently the build process is only supported on Apple Silicon.
 
 With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
-
 
 ### ✌️ License
 
