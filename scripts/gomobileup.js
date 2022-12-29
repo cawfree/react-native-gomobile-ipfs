@@ -92,10 +92,10 @@ platforms_to_remove
 
 const filesToZip = fs.readdirSync(libs);
 
-child_process.execSync(
-  `zip -r9 core.aar ${filesToZip.join(' ')}`,
-  { stdio, cwd: libs }
-);
+child_process.execSync(`zip -r9 core.aar ${filesToZip.join(' ')}`, {
+  stdio,
+  cwd: libs,
+});
 
 filesToZip.forEach((file) =>
   fs.removeSync(path.resolve(libs, file), { recursive: true })

@@ -52,6 +52,28 @@ To build from source for Android and iOS, you'll need the following tools instal
 
 With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
 
+
+### 📲 Building with Expo
+
+1. You can install to your project using `npx expo install react-native-gomobile-ipfs`.
+2. Next, you'll need to add the Helios plugin to your Expo config (`app.json`, `app.config.json` or `app.config.js`):
+
+```diff
+{
+  "expo": {
+    "name": "my-app",
++   "plugins": [
++     "react-native-gomobile-ipfs"
++   ]
+  }
+}
+```
+3. Once that's done, use `npx expo prebuild` to generate Expo-friendly native binaries.
+4. Finally, run `eas build` to build a new binary, or use `yarn ios` or `yarn android` to start running.
+
+> Note:
+> To run `eas build`, you'll need to `npm install --global expo-cli eas-cli`.
+
 ### ✌️ License
 
 [__MIT__](./LICENSE)
