@@ -18,7 +18,7 @@ yarn add react-native-gomobile-ipfs
 
 ### ✏️ Usage
 
-[`react-native-gomobile-ipfs`](https://github.com/cawfree/react-native-gomobile-ipfs) exports a `start` function, which allows the app to launch a localhost [__API__](https://docs.ipfs.tech/reference/kubo/rpc/). In the example below, we show how to [`cat`](https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cat) the [`hello worlds`](https://blog.ipfs.io/0-hello-worlds/) tutorial hash.
+In this module, `import`ing [`react-native-gomobile-ipfs`](https://github.com/cawfree/react-native-gomobile-ipfs) exports a `start()` function, which allows the app to launch a localhost [__API__](https://docs.ipfs.tech/reference/kubo/rpc/). In the example below, we show how to [`cat`](https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cat) the [`hello worlds`](https://blog.ipfs.io/0-hello-worlds/) tutorial hash:
 
 ```typescript
 import { start, getIpfsUri } from 'react-native-gomobile-ipfs';
@@ -39,9 +39,17 @@ console.log(result); // "hello, worlds"
 await stop();
 ```
 
-By calling `getIpfsUri`, we can determine the platform-specific `localhost` URI of our IPFS API. Once finished, we can safely `close()` the resource.
+By calling `getIpfsUri()`, we can determine the platform-specific `localhost` URI of our IPFS API. Once finished, we safely `close()` the resource to terminate the server.
 
-For further examples, please check out the [__Example App__](./example/src/App.tsx).
+For further demonstration, please check out the [__Example App__](./example/src/App.tsx).
+
+### 🏗 Building from Source
+
+To build from source for Android and iOS, you'll need the following tools installed:
+- [__Go__](https://go.dev/doc/install)
+- [__Android SDK__](https://developer.android.com/sdk) & [__Android NDK__](https://developer.android.com/ndk) & [__Java SE__](https://www.oracle.com/uk/java/technologies/downloads/)
+
+With these installed, run `yarn gomobileup` from the project root to generate the native binaries and link the example application.
 
 ### ✌️ License
 

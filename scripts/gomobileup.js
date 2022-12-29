@@ -107,6 +107,8 @@ fs.writeFileSync(
     .readFileSync(android_hack, 'utf-8')
     .split('\n')
     .flatMap((str) => {
+      // HACK: Enable external access to the `node` instance so that we can
+      //       call `serveTCPGateway` for parity with iOS.
       if (str.trim() === 'private Node node;') {
         return ['public Node node;'];
       }
