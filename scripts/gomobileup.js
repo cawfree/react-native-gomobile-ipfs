@@ -60,6 +60,14 @@ if (fs.existsSync(xcframework_to))
 
 fs.copySync(xcframework, xcframework_to, { dereference: true });
 
+// Remove version duplicates.
+['ios-arm64', 'ios-arm64_x86_64-simulator'].forEach((name) =>
+  fs.removeSync(
+    path.resolve(xcframework_to, name, 'Core.framework', 'Versions'),
+    { recursive: true }
+  )
+);
+
 const libs = path.resolve('android', 'libs');
 
 if (fs.existsSync(libs)) fs.removeSync(libs, { recursive: true });
