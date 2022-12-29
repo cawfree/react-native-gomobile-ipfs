@@ -58,7 +58,7 @@ const xcframework_to = path.resolve('ios', 'Core.xcframework');
 if (fs.existsSync(xcframework_to))
   fs.removeSync(xcframework_to, { recursive: true });
 
-fs.copySync(xcframework, xcframework_to);
+fs.copySync(xcframework, xcframework_to, { dereference: true });
 
 const libs = path.resolve('android', 'libs');
 
