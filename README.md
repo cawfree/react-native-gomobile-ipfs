@@ -42,18 +42,7 @@ By calling `getIpfsUri()`, we can determine the platform-specific `localhost` UR
 
 For further demonstration, please check out the [__Example App__](./example/src/App.tsx).
 
-### 🏗 Building from Source
-
-To build from source for Android and iOS, you'll need the following tools installed:
-- [__Go__](https://go.dev/doc/install)
-- [__Android SDK__](https://developer.android.com/sdk) & [__Android NDK__](https://developer.android.com/ndk) & [__Java SE__](https://www.oracle.com/uk/java/technologies/downloads/)
-
-> ⚠️ Currently the build process is only supported on Apple Silicon.
-
-With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
-
-
-### 📲 Building with Expo
+### 📲 Running on Expo
 
 1. You can install to your project using `npx expo install react-native-gomobile-ipfs`.
 2. Next, you'll need to add the Helios plugin to your Expo config (`app.json`, `app.config.json` or `app.config.js`):
@@ -73,6 +62,17 @@ With these installed, run `yarn gomobileup` from the project root to [__generate
 
 > Note:
 > To run `eas build`, you'll need to `npm install --global expo-cli eas-cli`.
+
+### 🏗 Building from Source
+
+To build from source for Android and iOS, you'll need the following tools installed:
+- [__Go__](https://go.dev/doc/install)
+- [__Android SDK__](https://developer.android.com/sdk) & [__Android NDK__](https://developer.android.com/ndk) & [__Java SE__](https://www.oracle.com/uk/java/technologies/downloads/)
+
+> ⚠️ Currently the build process is only supported on Apple Silicon.
+
+With these installed, run `yarn gomobileup` from the project root to [__generate the native binaries__](./scripts/gomobileup.js) and link the example application.
+
 
 ### ✌️ License
 
