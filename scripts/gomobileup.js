@@ -94,7 +94,6 @@ const filesToZip = fs.readdirSync(libs);
 
 child_process.execSync(
   `zip -r9 core.aar ${filesToZip.join(' ')}`,
-  //`zip -r core.aar ${filesToZip.join(' ')}`,
   { stdio, cwd: libs }
 );
 

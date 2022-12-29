@@ -1,5 +1,6 @@
 package com.gomobileipfs;
 
+import android.app.Activity;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -81,16 +82,17 @@ public class GomobileIpfsModule extends ReactContextBaseJavaModule {
   }
 
   private static final void resolveOrReject(
+    final Activity pActivity,
     final Promise pPromise,
     final RunnableWithException pRunnable
   ) {
     EXECUTOR.execute(() -> {
       try {
         pRunnable.run();
-        pPromise.resolve(0);
+        pActivity.runOnUiThread(() -> pPromise.resolve(0));
       } catch (Exception e) {
         e.printStackTrace();
-        pPromise.reject(e);
+        pActivity.runOnUiThread(() -> pPromise.reject(e));
       }
     });
   }
@@ -101,6 +103,7 @@ public class GomobileIpfsModule extends ReactContextBaseJavaModule {
     final Promise pPromise
   ) {
     resolveOrReject(
+      getCurrentActivity(),
       pPromise,
       () -> {
         final String repo_path = pParams.getString("repo_path");
@@ -115,6 +118,7 @@ public class GomobileIpfsModule extends ReactContextBaseJavaModule {
     final Promise pPromise
   ) {
     resolveOrReject(
+      getCurrentActivity(),
       pPromise,
       () -> shouldStopIpfs(getPort(pParams))
     );
