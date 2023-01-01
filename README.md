@@ -45,7 +45,7 @@ For further demonstration, please check out the [__Example App__](./example/src/
 ### 📲 Running on Expo
 
 1. You can install to your project using `npx expo install react-native-gomobile-ipfs`.
-2. Next, you'll need to add the Helios plugin to your Expo config (`app.json`, `app.config.json` or `app.config.js`):
+2. Next, you'll need to add the `react-native-gomobile-ipfs` plugin to your Expo config (`app.json`, `app.config.json` or `app.config.js`):
 
 ```diff
 {
