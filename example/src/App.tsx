@@ -14,7 +14,10 @@ export default function App() {
 
           const uri = getIpfsUri({ port });
           const four_bytes = `/ipfs/bafybeicsj2jntw5nf4ld23czky3ydhpivphgivcgcxegzbqpdxrhbgfu3y/4bytes`;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const bytecode = `${four_bytes}/f78d1c6a`;
+          const mars =
+            '/ipfs/QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX/wiki/Mars.html';
 
           const [{ data: helloWorlds }] = await Promise.all([
             axios({
@@ -31,7 +34,7 @@ export default function App() {
             },
           ] = await Promise.all([
             axios({
-              url: `${uri}/resolve?arg=${bytecode}&recursive=true&dht-timeout=0`,
+              url: `${uri}/resolve?arg=${mars}&recursive=true&dht-timeout=0`,
               method: 'post',
             }),
           ]);
